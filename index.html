@@ -3,40 +3,43 @@
     <!-- Include MomentJS library -->
     <script src="//momentjs.com/downloads/moment.js"></script>
     <script src="//momentjs.com/downloads/moment-timezone-with-data-2012-2022.js"></script>
-    <script src="//code.jquery.com/jquery.js"></script>
-    <script src="//cdn.rawgit.com/hilios/jQuery.countdown/2.2.0/dist/jquery.countdown.min.js"></script>
+    <script src="jquery/jquery.js"></script>
+    <script src="jquery.countdown.js"></script>
 </head>
 
 <body>
-    <h1>Test countdown test</h1>
-    <div data-countdown="2019/01/01"></div>
-    <!--
-   <script>
-    $('[data-countdown]').each(function() {
-        var $this = $(this),
-            finalDate = $(this).data('countdown');
-        $this.countdown(moment.tz(finalDate, "UTC"), function(event) {
-            $this.html(event.strftime('%D days %H:%M:%S'));
+    <h1>TIME UNTIL NAORI'S BDAY </h1>
+    <h2>Hint hint, nudge nudge</h2>
+    <div data-countdown="2019-08-01 00:00"></div>
+
+    <script>
+        $('[data-countdown]').each(function() {
+            var $this = $(this),
+                intermediateryDate = moment.tz($(this), "UTC");
+            finalDate = $this.countdown(intermediateryDate.toDate());
+            $this.countdown(finalDate, function(event) {
+                $this.html(event.strftime('%D days %H:%M:%S'));
+            });
         });
-    });
 
-</script>
--->
+    </script>
+    <script>
+        let timer1 = moment.tz("2019-08-01 00:00", "UTC");
+        let timer2 = moment.tz("2019-08-01 00:00", "America/New_York");
+
+    </script>
+
     UTC
-    <div id="clock">UTC<script>
-            let nextYear = moment.tz("2019-01-01 00:00", "UTC");
-
-            $('#clock').countdown(nextYear.toDate(), function(event) {
+    <div id="clock1">UTC<script>
+            $('#clock1').countdown(timer1.toDate(), function(event) {
                 $(this).html(event.strftime('%D days %H:%M:%S'));
             });
 
         </script>
     </div>
     <p></p>
-    EST
+    America/New_York
     <div id="clock2">EST<script>
-            let timer2 = moment.tz("2019-01-01 00:00", "America/New_York");
-
             $('#clock2').countdown(timer2.toDate(), function(event) {
                 $(this).html(event.strftime('%D days %H:%M:%S'));
             });
