@@ -1,7 +1,17 @@
-<!-- Include MomentJS library -->
-<script src="moment.js"></script>
-<script src="moment-timezone-with-data.js"></script>
-<script>
+<head>
+    <title>Test countdowns</title>
+    <!-- Include MomentJS library -->
+    <script src="moment.js"></script>
+    <script src="moment-timezone-with-data.js"></script>
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="//cdn.rawgit.com/hilios/jQuery.countdown/2.2.0/dist/jquery.countdown.min.js"></script>
+</head>
+
+<body>
+    <h1>Test countdown test</h1>
+    <div data-countdown="2019/01/01"></div>
+    <!--
+   <script>
     $('[data-countdown]').each(function() {
         var $this = $(this),
             finalDate = $(this).data('countdown');
@@ -9,11 +19,19 @@
             $this.html(event.strftime('%D days %H:%M:%S'));
         });
     });
-</script>
-<!-- 
-$('#clock').countdown(nextYear.toDate(), function(event) {
-  $(this).html(event.strftime('%D days %H:%M:%S')); 
-  
-  -->
 
-<div data-countdown="2019/01/01"></div>
+</script>
+-->
+    <div id="clock"></div>
+    <script>
+        var nextYear = moment.tz("2019-01-01 00:00", "UTC");
+
+        $('#clock').countdown(nextYear.toDate(), function(event) {
+            $(this).html(event.strftime('%D days %H:%M:%S'));
+        });
+
+    </script>
+
+
+
+</body>
